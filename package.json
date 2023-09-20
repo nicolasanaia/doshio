@@ -1,0 +1,22 @@
+{
+  "name": "mangime",
+  "version": "1.0.0",
+  "description": "an application to bring up recommended mangas and animes through anilist api",
+  "main": "server.ts",
+  "repository": "git@github.com:nicolasanaia/mangime.git",
+  "author": "Nicolas Anaia <nicolasanaia@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon src/server.ts"
+  },
+  "dependencies": {
+    "nodemon": "^3.0.1",
+    "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "typescript": "^5.2.2"
+  }
+}
