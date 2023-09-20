@@ -131,3 +131,6 @@ dist
 
 # envs
 .env.development.local
+
+# notes
+notes/*
