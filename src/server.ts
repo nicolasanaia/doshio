@@ -1,12 +1,5 @@
-import express from 'express';
-import './config';
+import { App } from "./app";
+import { RecommendationsController } from "./controllers/recommendations";
 
-const app = express();
-
-console.log('🚀 ---------------------------------------- 🚀');
-console.log(`🚀 --------- RUNNING ON PORT ${process.env.PORT} --------- 🚀`);
-console.log('🚀 ---------------------------------------- 🚀');
-
-app.use(express.json());
-
-app.listen(process.env.PORT);
+const app = new App([RecommendationsController]);
+app.listen();

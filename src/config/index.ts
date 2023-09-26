@@ -1,6 +1,8 @@
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 
-const environment = process.env.NODE_ENV || 'development';
-const envFile = `.env.${environment}.local`;
+config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
-dotenv.config({ path: envFile });
+export const {
+    NODE_ENV,
+    PORT,
+  } = process.env;
