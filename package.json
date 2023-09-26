@@ -1,27 +1,36 @@
 {
-  "name": "mangime",
+  "name": "doshio",
   "version": "1.0.0",
-  "description": "an application to bring up recommended mangas and animes through anilist api",
+  "description": "the ultimate anime and manga picker",
   "main": "server.ts",
   "repository": "git@github.com:nicolasanaia/mangime.git",
   "author": "Nicolas Anaia <nicolasanaia@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon src/server.ts"
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "start": "npm run build --scripts-prepend-node-path && cross-env NODE_ENV=production node dist/server.js",
+    "build": "swc src -d dist --source-maps --copy-files",
+    "build:tsc": "tsc && tsc-alias"
   },
   "dependencies": {
-    "class-transformer": "^0.5.1",
+    "axios": "^1.5.1",
     "class-validator": "^0.14.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "hpp": "^0.2.3",
     "nodemon": "^3.0.1",
     "routing-controllers": "^0.10.4",
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.14",
     "@types/express": "^4.17.17",
+    "@types/hpp": "^0.2.3",
     "@types/node": "^20.6.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   }
 }
