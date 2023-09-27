@@ -1,6 +1,6 @@
 import App from "./app";
-
 import { RecommendationsController } from "./controllers/recommendations";
 
-const app = new App([RecommendationsController]);
+const app = new App();
+
 app.listen();

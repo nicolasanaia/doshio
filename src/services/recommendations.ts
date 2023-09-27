@@ -1,12 +1,21 @@
 import { RecommendationsResponse } from "../models/response";
+import { AnilistService } from "./anilist";
 
 export class RecommendationsService {
-    async getRecommendation<T>(): Promise<RecommendationsResponse<T>> {
+    anilist: AnilistService;
+
+    constructor() {
+        this.anilist = new AnilistService();
+    }
+
+    async getRecommendation(): Promise<RecommendationsResponse> {
         try {
-            
-            
-            return new RecommendationsResponse(false, 'Successfully found recommendation');
-        } catch (error: any) {
+            const recommendation = await this.anilist.getRecommendation();
+            // if (!)
+            console.log(recommendation);
+
+            return new RecommendationsResponse(false, 'Successfully found recommendation', recommendation);
+        } catch (error) {
             return new RecommendationsResponse(true, error.message);
         }
     }

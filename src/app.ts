@@ -1,25 +1,23 @@
-import 'reflect-metadata';
+import "reflect-metadata";
 
 import express from 'express';
-import cors from 'cors';
-import hpp from 'hpp';
-import helmet from 'helmet';
-import { useExpressServer } from 'routing-controllers';
 
-import { NODE_ENV, PORT, ORIGIN, CREDENTIALS } from './config';
+import { NODE_ENV, PORT } from './config';
+import { createExpressServer, useExpressServer } from "routing-controllers";
+import path from "path";
 
-export default class App {
+class App {
     public app: express.Application;
     public env: string;
     public port: string | number;
   
-    constructor(controllers: Function[]) {
+    constructor() {
         this.app = express();
         this.env = NODE_ENV || 'development';
         this.port = PORT || 3000;
-    
+
         this.initializeMiddlewares();
-        this.initializeRoutes(controllers);
+        this.initializeRoutes();
     }
 
     public listen() {
@@ -31,28 +29,16 @@ export default class App {
         });
     }
 
-    public getServer() {
-        return this.app;
-    }
-
     private initializeMiddlewares() {
-        this.app.use(hpp());
-        this.app.use(cors());
-        this.app.use(helmet());
         this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: true }));
     }
 
-    private initializeRoutes(controllers: Function[]) {
-        useExpressServer(this.app, {
-            cors: {
-                origin: ORIGIN,
-                credentials: CREDENTIALS,
-            },
-            controllers: controllers,
-            defaultErrorHandler: false,
-          });
-
-          
+    private initializeRoutes() {
+      createExpressServer({
+        controllers:  [path.join(__dirname, '/controllers/*.ts')],
+        routePrefix: '/api',
+      }).listen(this.port);
     }
 }
+
+export default App;

@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, Post } from "routing-controllers";
+import { Controller, Get, HttpCode } from "routing-controllers";
 
 import { RecommendationsService } from "../services/recommendations";
 
@@ -10,10 +10,10 @@ export class RecommendationsController {
         this.service = new RecommendationsService();
     }
 
-    @Post('/new')
+    @Get('/new')
     @HttpCode(200)
     async getRecommendation() {
-        const response = this.service.getRecommendation();
+        const response = await this.service.getRecommendation();
 
         return { data: response };
     }
