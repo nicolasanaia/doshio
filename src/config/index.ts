@@ -3,8 +3,10 @@ import { config } from 'dotenv';
 config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 export const {
-    NODE_ENV,
+    HOST,
+    USER_DB,
+    PASSWORD,
+    DATABASE,
     PORT,
-    ORIGIN,
-    CREDENTIALS
+    NODE_ENV
   } = process.env;

@@ -1,10 +1,10 @@
 import "reflect-metadata";
 
 import express from 'express';
+import path from "path";
+import { createExpressServer } from "routing-controllers";
 
 import { NODE_ENV, PORT } from './config';
-import { createExpressServer, useExpressServer } from "routing-controllers";
-import path from "path";
 
 class App {
     public app: express.Application;
