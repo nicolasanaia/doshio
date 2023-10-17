@@ -1,6 +1,7 @@
 import { Knex } from 'knex';
-import { DATABASE, PASSWORD, USER_DB } from '../config';
 import path from 'path';
+
+import { DATABASE, PASSWORD, USER_DB } from '../config';
 
 interface IKnexConfig {
   [key: string]: Knex.Config;
