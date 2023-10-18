@@ -12,7 +12,8 @@
     "build:tsc": "tsc && tsc-alias",
     "migrate:make": "knex migrate:make --knexfile src/database/knexfile.ts -x ts",
     "migrate:latest": "dotenv -e .env.development.local -- knex migrate:latest --knexfile src/database/knexfile.ts",
-    "migrate:up": "dotenv -e .env.development.local -- knex migrate:up --knexfile src/database/knexfile.ts"
+    "migrate:up": "dotenv -e .env.development.local -- knex migrate:up --knexfile src/database/knexfile.ts",
+    "migrate:rollback": "dotenv -e .env.development.local -- knex migrate:rollback --knexfile src/database/knexfile.ts"
   },
   "dependencies": {
     "axios": "^1.5.1",

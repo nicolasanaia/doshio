@@ -15,7 +15,7 @@ const configs: IKnexConfig = {
       password: PASSWORD,
       database: DATABASE,
     },
-    debug: true,
+    debug: false,
     useNullAsDefault: true,
     pool: {
       min: 2,
@@ -34,7 +34,7 @@ const configs: IKnexConfig = {
       password: PASSWORD,
       database: DATABASE,
     },
-    debug: true,
+    debug: false,
     useNullAsDefault: true,
     pool: {
       min: 2,
@@ -53,7 +53,7 @@ const configs: IKnexConfig = {
       password: PASSWORD,
       database: DATABASE,
     },
-    debug: true,
+    debug: false,
     useNullAsDefault: true,
     pool: {
       min: 2,
