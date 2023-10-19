@@ -1,5 +1,5 @@
-import { App } from "./app";
-import { RecommendationsController } from "./controllers/recommendations";
+import App from "./app";
 
-const app = new App([RecommendationsController]);
+const app = new App();
+
 app.listen();
