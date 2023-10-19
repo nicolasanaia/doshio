@@ -1,9 +1,9 @@
 import { Controller, Get, HttpCode } from "routing-controllers";
 
-import { RecommendationsService } from "../services/recommendations";
+import RecommendationsService from "../services/recommendations";
 
 @Controller('/recommendation')
-export class RecommendationsController {
+export default class RecommendationsController {
     service: RecommendationsService;
 
     constructor() {

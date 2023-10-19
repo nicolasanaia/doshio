@@ -1,7 +1,7 @@
 import { RecommendationsResponse } from "../models/response";
-import { AnilistService } from "./anilist";
+import AnilistService from "./anilist";
 
-export class RecommendationsService {
+export default class RecommendationsService {
     anilist: AnilistService;
 
     constructor() {

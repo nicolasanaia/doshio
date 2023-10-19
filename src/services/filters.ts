@@ -1,3 +1,3 @@
-export class FiltersService {
-    
+export default class FiltersService {
+
 }

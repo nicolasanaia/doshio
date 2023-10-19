@@ -3,7 +3,7 @@ import axios from "axios";
 import { URL } from "../constants/url"
 import { IRecommendationAnilistResponse } from "../interfaces/anilist";
 
-export class AnilistService {
+export default class AnilistService {
     async getRecommendation(): Promise<IRecommendationAnilistResponse> {
         const graphqlQuery = `
             query ($page: Int, $minScore: Int, $genre: String, $format: MediaType) {

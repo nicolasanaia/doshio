@@ -1,22 +1,14 @@
 import { Controller, Get, HttpCode } from "routing-controllers";
 
-import { FiltersService } from "../services/filters";
+import FiltersService from "../services/filters";
 
 @Controller('/build/filter')
-export class RecommendationsController {
+export default class RecommendationsController {
     service: FiltersService;
 
     constructor() {
         this.service = new FiltersService();
     }
-
-    // @Get('/mood')
-    // @HttpCode(200)
-    // async getMood() {
-    //     const response = await this.service.getMood();
-
-    //     return { data: response };
-    // }
 
     // @Get('/questions')
     // @HttpCode(200)

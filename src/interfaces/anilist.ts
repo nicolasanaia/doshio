@@ -1,10 +1,10 @@
-interface ITitle {
+type ITitle = {
     romaji?: string,
     english?: string,
     native?: string
 }
 
-interface ICoverImage {
+type ICoverImage = {
   large?: string
 }
 

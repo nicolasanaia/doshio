@@ -1,6 +1,6 @@
 // import db from "../database/knexfile";
 
-export class GenresService {
+export default class GenresService {
     async getAllGenres() {
         // const genres = await db.from('genres').select('*')
         //     .then((rows) => {
