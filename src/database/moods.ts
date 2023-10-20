@@ -1,7 +1,7 @@
 import { IMood } from "../interfaces/moods";
 import db from "./db";
 
-export class MoodsTable {
+export default class GenresDatabase {
     public table: string = 'moods';
     private get = db.from(this.table);
 

@@ -1,12 +1,12 @@
 import { MoodsResponse } from "../models/response";
-import { MoodsTable } from "../database/moods";
+import MoodsDatabase from "../database/moods";
 import { IMood } from "../interfaces/moods";
 
 export default class MoodsService {
-    moodsTable: MoodsTable;
+    moodsTable: MoodsDatabase;
 
     constructor() {
-        this.moodsTable = new MoodsTable();
+        this.moodsTable = new MoodsDatabase();
     }
 
     async getAllMoods(): Promise<MoodsResponse> {
