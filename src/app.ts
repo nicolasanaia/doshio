@@ -2,6 +2,7 @@ import "reflect-metadata";
 
 import express from 'express';
 import path from "path";
+import cors from "cors";
 import { useExpressServer } from "routing-controllers";
 
 import { CREDENTIALS, NODE_ENV, ORIGIN, PORT } from './config';
@@ -20,7 +21,6 @@ class App {
 
         this.initializeMiddlewares();
         this.initializeRoutes();
-        // this.initializeServer();
     }
 
     public listen() {
@@ -33,6 +33,7 @@ class App {
     }
 
     private initializeMiddlewares() {        
+        this.app.use(cors());
         this.app.use(express.json());
     }
 

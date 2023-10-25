@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsArray, IsBoolean, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CreateGenreDTO {
     @IsString()
@@ -8,4 +8,10 @@ export class CreateGenreDTO {
     @IsBoolean()
     @IsOptional()
     active: boolean = true;
+}
+
+export class createGenresListDTO {
+    @IsArray()
+    @IsNotEmpty()
+    genres: CreateGenreDTO[];
 }
