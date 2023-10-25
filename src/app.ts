@@ -2,22 +2,25 @@ import "reflect-metadata";
 
 import express from 'express';
 import path from "path";
-import { createExpressServer } from "routing-controllers";
+import { useExpressServer } from "routing-controllers";
 
-import { NODE_ENV, PORT } from './config';
+import { CREDENTIALS, NODE_ENV, ORIGIN, PORT } from './config';
 
 class App {
     public app: express.Application;
     public env: string;
     public port: string | number;
+    public controllers: string[];
   
     constructor() {
         this.app = express();
         this.env = NODE_ENV || 'development';
         this.port = PORT || 3000;
+        this.controllers = [path.join(__dirname, '/controllers/*.ts')]
 
         this.initializeMiddlewares();
         this.initializeRoutes();
+        // this.initializeServer();
     }
 
     public listen() {
@@ -29,15 +32,21 @@ class App {
         });
     }
 
-    private initializeMiddlewares() {
+    private initializeMiddlewares() {        
         this.app.use(express.json());
     }
 
     private initializeRoutes() {
-      createExpressServer({
-        controllers:  [path.join(__dirname, '/controllers/*.ts')],
-        routePrefix: '/api',
-      }).listen(this.port);
+        useExpressServer(this.app, {
+            cors: {
+                origin: ORIGIN,
+                credentials: CREDENTIALS,
+            },
+            controllers: this.controllers,
+            defaultErrorHandler: false,
+            routePrefix: '/api',
+            classTransformer: true,
+        });
     }
 }
 

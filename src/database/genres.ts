@@ -3,13 +3,12 @@ import db from "./db";
 
 export default class GenresDatabase {
     public table: string = 'genres';
-    private genres = db.from(this.table);
 
     async getAllGenres(): Promise<IGenre[]> {
-        return await this.genres.select('*');
+        return await db.from(this.table).select('*');
     }
 
     async createGenre(genre: IGenre): Promise<void> {
-        await this.genres.insert(genre);
+        await db.from(this.table).insert(genre);
     }
 }

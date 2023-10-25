@@ -4,4 +4,8 @@ export class CreateGenreDTO {
     @IsString()
     @IsNotEmpty()
     name: string;
+
+    @IsBoolean()
+    @IsOptional()
+    active: boolean = true;
 }
