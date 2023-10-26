@@ -8,5 +8,7 @@ export const {
   PASSWORD,
   DATABASE,
   PORT,
-  NODE_ENV
+  NODE_ENV,
+  ORIGIN,
+  CREDENTIALS
 } = process.env;

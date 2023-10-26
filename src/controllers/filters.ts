@@ -3,7 +3,7 @@ import { Controller, Get, HttpCode } from "routing-controllers";
 import FiltersService from "../services/filters";
 
 @Controller('/build/filter')
-export default class RecommendationsController {
+export default class FiltersController {
     service: FiltersService;
 
     constructor() {
