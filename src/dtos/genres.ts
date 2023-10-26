@@ -10,8 +10,14 @@ export class CreateGenreDTO {
     active: boolean = true;
 }
 
-export class createGenresListDTO {
+export class CreateGenresListDTO {
     @IsArray()
     @IsNotEmpty()
     genres: CreateGenreDTO[];
+}
+
+export class getGenreByNameDTO {
+    @IsNotEmpty()
+    @IsString()
+    name: string;
 }

@@ -9,6 +9,18 @@ export default class GenresService {
         this.genresTable = new GenresDatabase();
     }
 
+    async getGenreByName(genreName: string): Promise<GenresResponse> {
+        try {
+            const [ genre ] = await this.genresTable.getActiveGenreByName(genreName) as IGenre[];
+
+            if (genre) {
+                return new GenresResponse(false, 'Genre found successfully', genre);
+            } else throw new Error('No genre was found');
+        } catch (error) {
+            return new GenresResponse(true, error.message);
+        }
+    }
+
     async getAllGenres(): Promise<GenresResponse> {
         try {
             const genres: IGenre[] = await this.genresTable.getAllGenres();
@@ -21,6 +33,10 @@ export default class GenresService {
 
     async createGenre(genre: IGenre): Promise<GenresResponse> {
         try {
+            const checkGenre = await this.genresTable.getGenreByName(genre.name);
+
+            if (checkGenre) throw new Error(`Genre with name ${genre.name} already exists`);
+
             await this.genresTable.createGenre(genre);
 
             return new GenresResponse(false, 'Genre created successfully', genre);
