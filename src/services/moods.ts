@@ -18,4 +18,18 @@ export default class MoodsService {
            return new MoodsResponse(true, error.message);
         }
     }
+
+    async createMood(moodName: string): Promise<MoodsResponse> {
+        try {
+            const [ checkMood ] = await this.moodsTable.getMoodByName(moodName);
+
+            if (checkMood) throw new Error(`Mood with name ${moodName} already exists`);
+
+            await this.moodsTable.createMood(moodName);
+
+            return new MoodsResponse(false, `Mood with name ${moodName} created successfully`);
+        } catch (error) {
+            return new MoodsResponse(true, error.message);
+        }
+    }
 }

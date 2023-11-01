@@ -5,6 +5,20 @@ export default class GenresDatabase {
     public table: string = 'moods';
 
     async getAllMoods(): Promise<IMood[]> {
-        return await db.from(this.table).select('*');
+        return await db<IMood>(this.table)
+            .select('*');
+    }
+
+    async getMoodByName(name: string): Promise<IMood[]> {
+        return await db<IMood>(this.table)
+            .select('*')
+            .where('name', name);
+    }
+
+    async createMood(moodName: string): Promise<void> {
+        await db<IMood>(this.table)
+            .insert({
+                name: moodName
+            });
     }
 }

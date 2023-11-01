@@ -33,7 +33,7 @@ export default class GenresService {
 
     async createGenre(genre: IGenre): Promise<GenresResponse> {
         try {
-            const checkGenre = await this.genresTable.getGenreByName(genre.name);
+            const [ checkGenre ] = await this.genresTable.getGenreByName(genre.name);
 
             if (checkGenre) throw new Error(`Genre with name ${genre.name} already exists`);
 

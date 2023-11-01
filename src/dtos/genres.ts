@@ -16,7 +16,7 @@ export class CreateGenresListDTO {
     genres: CreateGenreDTO[];
 }
 
-export class getGenreByNameDTO {
+export class GetGenreByNameDTO {
     @IsNotEmpty()
     @IsString()
     name: string;
