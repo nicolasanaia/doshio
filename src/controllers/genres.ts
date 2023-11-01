@@ -1,8 +1,10 @@
 import { Body, Controller, Get, HttpCode, Post, Put } from "routing-controllers";
 
 import GenresService from "../services/genres";
-import { CreateGenreDTO, CreateGenresListDTO, getGenreByNameDTO } from "../dtos/genres";
+import { CreateGenreDTO, CreateGenresListDTO, GetGenreByNameDTO } from "../dtos/genres";
 import { IGenre } from "../interfaces/genres";
+import { ApiResponse } from "../interfaces/response";
+import { GenresResponse } from "src/models/response";
 
 @Controller('/genre')
 export default class GenresController {
@@ -14,7 +16,7 @@ export default class GenresController {
 
     @Get('/find')
     @HttpCode(200)
-    async getGenreByName(@Body() genreDTO: getGenreByNameDTO) {
+    async getGenreByName(@Body() genreDTO: GetGenreByNameDTO): Promise<ApiResponse<GenresResponse>> {
         const response = await this.service.getGenreByName(genreDTO.name);
 
         return { data: response };
@@ -22,7 +24,7 @@ export default class GenresController {
 
     @Get('/find/all')
     @HttpCode(200)
-    async getAll() {
+    async getAll(): Promise<ApiResponse<GenresResponse>> {
         const response = await this.service.getAllGenres();
 
         return { data: response };
@@ -30,7 +32,7 @@ export default class GenresController {
 
     @Post('/create')
     @HttpCode(200)
-    async createGenre(@Body() genreDTO: CreateGenreDTO) {
+    async createGenre(@Body() genreDTO: CreateGenreDTO): Promise<ApiResponse<GenresResponse>> {
         const response = await this.service.createGenre({
             name: genreDTO.name,
             active: genreDTO.active ?? true
@@ -41,7 +43,7 @@ export default class GenresController {
 
     @Post('/create/list')
     @HttpCode(200)
-    async createGenresList(@Body() genresDTO: CreateGenresListDTO) {
+    async createGenresList(@Body() genresDTO: CreateGenresListDTO): Promise<ApiResponse<GenresResponse>> {
         const genres: IGenre[] = genresDTO.genres.map(genre => {
             return {
                 name: genre.name,

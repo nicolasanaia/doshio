@@ -18,10 +18,12 @@ export default class GenresDatabase {
     }
 
     async getAllGenres(): Promise<IGenre[]> {
-        return await db<IGenre>(this.table).select('*');
+        return await db<IGenre>(this.table)
+            .select('*');
     }
 
     async createGenre(genre: IGenre): Promise<void> {
-        await db<IGenre>(this.table).insert(genre);
+        await db<IGenre>(this.table)
+            .insert(genre);
     }
 }

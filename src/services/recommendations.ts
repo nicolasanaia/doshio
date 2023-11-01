@@ -11,8 +11,6 @@ export default class RecommendationsService {
     async getRecommendation(): Promise<RecommendationsResponse> {
         try {
             const recommendation = await this.anilist.getRecommendation();
-            // if (!)
-            console.log(recommendation);
 
             return new RecommendationsResponse(false, 'Successfully found recommendation', recommendation);
         } catch (error) {
