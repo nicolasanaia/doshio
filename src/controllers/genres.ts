@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Post, Put } from "routing-controllers";
+import { Body, Controller, Get, HttpCode, Post } from "routing-controllers";
 
 import GenresService from "../services/genres";
 import { CreateGenreDTO, CreateGenresListDTO, GetGenreByNameDTO } from "../dtos/genres";
