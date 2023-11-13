@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 import path from 'path';
 
-import { DATABASE, PASSWORD, USER_DB } from '../../config';
+import { DATABASE, PASSWORD, USER_DB } from './config';
 
 interface IKnexConfig {
   [key: string]: Knex.Config;
@@ -23,7 +23,7 @@ const configs: IKnexConfig = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: path.resolve(__dirname, '../migrations')
+      directory: path.join(__dirname, '/database/migrations')
     }
   },
 
@@ -42,7 +42,7 @@ const configs: IKnexConfig = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: path.resolve(__dirname, '../migrations')
+      directory: path.join(__dirname, '/database/migrations')
     }
   },
 
@@ -61,7 +61,7 @@ const configs: IKnexConfig = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: path.resolve(__dirname, '../migrations')
+      directory: path.join(__dirname, '/database/migrations')
     }
   },
 };
