@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 import path from 'path';
 
-import { DATABASE, PASSWORD, USER_DB } from './config';
+import { DATABASE, HOST, PASSWORD, USER_DB } from './config';
 
 interface IKnexConfig {
   [key: string]: Knex.Config;
@@ -11,6 +11,7 @@ const configs: IKnexConfig = {
   development: {
     client: 'mysql2',
     connection: {
+      host: HOST,
       user: USER_DB,
       password: PASSWORD,
       database: DATABASE,
@@ -30,6 +31,7 @@ const configs: IKnexConfig = {
   staging: {
     client: 'mysql2',
     connection: {
+      host: HOST,
       user: USER_DB,
       password: PASSWORD,
       database: DATABASE,
@@ -49,6 +51,7 @@ const configs: IKnexConfig = {
   production: {
     client: 'mysql2',
     connection: {
+      host: HOST,
       user: USER_DB,
       password: PASSWORD,
       database: DATABASE,
