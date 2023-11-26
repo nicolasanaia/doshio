@@ -10,6 +10,7 @@
     "dev": "cross-env NODE_ENV=development nodemon",
     "start": "npm run build --scripts-prepend-node-path && cross-env NODE_ENV=production node dist/server.js",
     "build:tsc": "tsc && tsc-alias",
+    "seed": "dotenv -e .env.development.local -- knex seed:run --knexfile src/knexfile.ts",
     "migrate:make": "knex migrate:make --knexfile src/knexfile.ts -x ts",
     "migrate:latest": "dotenv -e .env.development.local -- knex migrate:latest --knexfile src/knexfile.ts",
     "migrate:up": "dotenv -e .env.development.local -- knex migrate:up --knexfile src/knexfile.ts",

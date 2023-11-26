@@ -50,7 +50,7 @@ export default class GenresController {
                 active: genre.active ?? true
             }
         });
-        console.log(genres)
+
         const response = await this.service.createGenresList(genres);
 
         return { data: response };

@@ -25,6 +25,9 @@ const configs: IKnexConfig = {
     migrations: {
       tableName: 'knex_migrations',
       directory: path.join(__dirname, '/database/migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, '/database/seeds')
     }
   },
 
@@ -45,6 +48,9 @@ const configs: IKnexConfig = {
     migrations: {
       tableName: 'knex_migrations',
       directory: path.join(__dirname, '/database/migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, '/database/seeds')
     }
   },
 
@@ -65,6 +71,9 @@ const configs: IKnexConfig = {
     migrations: {
       tableName: 'knex_migrations',
       directory: path.join(__dirname, '/database/migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, '/database/seeds')
     }
   },
 };
