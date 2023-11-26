@@ -2,37 +2,38 @@ import axios from "axios";
 
 import { URL } from "../constants/url"
 import { IRecommendationAnilistResponse } from "../interfaces/anilist";
+import { IFilters } from "../interfaces/filters";
 
 export default class AnilistService {
-    async getRecommendation(): Promise<IRecommendationAnilistResponse> {
-        const graphqlQuery = `
-            query ($page: Int, $minScore: Int, $genre: String, $format: MediaType) {
-                Page(page: $page, perPage: 1) {
-                    media(type: $format, isAdult: false, averageScore_greater: $minScore, genre: $genre) {
-                        id,
+    async getRecommendation(filters: IFilters): Promise<IRecommendationAnilistResponse> {
+        try {
+            const graphqlQuery = `
+                query ($page: Int, $minScore: Int, $genre: [String], $format: MediaType) {
+                    Page(page: $page, perPage: 1) {
+                    media(type: $format, isAdult: false, averageScore_greater: $minScore, genre_in: $genre) {
+                        id
                         title {
-                            romaji,
-                            english,
-                            native
-                        },
+                        romaji,
+                        english,
+                        native
+                        }
                         coverImage {
-                            large
+                        large
                         }
                         description,
                         genres
                     }
+                    }
                 }
-            }
-        `;
+            `;
 
-        const variables = {
-            page: Math.floor(Math.random() * 100),
-            minScore: 80,
-            genre: "Action",
-            format: "ANIME",
-        };
-        console.log(variables)
-        try {
+            const variables = {
+                page: Math.floor(Math.random() * 500),
+                minScore: filters.minScore,
+                genres: filters.genres,
+                format: filters.format,
+            };
+
             const { data, status } = await axios.post(URL.ANILIST_GRAPHQL, { 
                 query: graphqlQuery,
                 variables: variables
