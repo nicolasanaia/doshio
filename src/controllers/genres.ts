@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Post, Put } from "routing-controllers";
+import { Body, Controller, Get, HttpCode, Post } from "routing-controllers";
 
 import GenresService from "../services/genres";
 import { CreateGenreDTO, CreateGenresListDTO, GetGenreByNameDTO } from "../dtos/genres";
@@ -50,7 +50,7 @@ export default class GenresController {
                 active: genre.active ?? true
             }
         });
-        console.log(genres)
+
         const response = await this.service.createGenresList(genres);
 
         return { data: response };

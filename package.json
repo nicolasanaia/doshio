@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "the ultimate anime and manga picker",
   "main": "server.ts",
-  "repository": "git@github.com:nicolasanaia/mangime.git",
+  "repository": "git@github.com:nicolasanaia/doshio.git",
   "author": "Nicolas Anaia <nicolasanaia@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "start": "npm run build --scripts-prepend-node-path && cross-env NODE_ENV=production node dist/server.js",
     "build:tsc": "tsc && tsc-alias",
-    "migrate:make": "knex migrate:make --knexfile src/database/knexfile.ts -x ts",
-    "migrate:latest": "dotenv -e .env.development.local -- knex migrate:latest --knexfile src/database/knexfile.ts",
-    "migrate:up": "dotenv -e .env.development.local -- knex migrate:up --knexfile src/database/knexfile.ts",
-    "migrate:rollback": "dotenv -e .env.development.local -- knex migrate:rollback --knexfile src/database/knexfile.ts"
+    "seed": "dotenv -e .env.development.local -- knex seed:run --knexfile src/knexfile.ts",
+    "migrate:make": "knex migrate:make --knexfile src/knexfile.ts -x ts",
+    "migrate:latest": "dotenv -e .env.development.local -- knex migrate:latest --knexfile src/knexfile.ts",
+    "migrate:up": "dotenv -e .env.development.local -- knex migrate:up --knexfile src/knexfile.ts",
+    "migrate:rollback": "dotenv -e .env.development.local -- knex migrate:rollback --knexfile src/knexfile.ts"
   },
   "dependencies": {
     "axios": "^1.5.1",

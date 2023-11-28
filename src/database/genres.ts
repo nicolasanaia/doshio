@@ -1,4 +1,4 @@
-import { IGenre } from "src/interfaces/genres";
+import { IGenre } from "../interfaces/genres";
 import db from "./db";
 
 export default class GenresDatabase {
