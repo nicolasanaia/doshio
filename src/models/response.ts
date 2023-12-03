@@ -1,6 +1,8 @@
 import { IMood } from "src/interfaces/moods";
-import { IRecommendationAnilistResponse } from "../interfaces/anilist";
+import { IRecommendationAnilist } from "../interfaces/anilist";
 import { IGenre } from "../interfaces/genres";
+import { IFilters } from "src/interfaces/filters";
+import { IQuestion } from "src/interfaces/questions";
 
 
 export class Response{
@@ -14,9 +16,9 @@ export class Response{
 }
 
 export class RecommendationsResponse extends Response {
-    recommendation?: IRecommendationAnilistResponse;
+    recommendation?: IRecommendationAnilist;
 
-    constructor(error: boolean, message: string, recommendation?: IRecommendationAnilistResponse) {
+    constructor(error: boolean, message: string, recommendation?: IRecommendationAnilist) {
         super(error, message),
         this.recommendation = recommendation
     }
@@ -37,5 +39,23 @@ export class MoodsResponse extends Response {
     constructor(error: boolean, message: string, moods?: IMood | IMood[]) {
         super(error, message),
         this.moods = moods
+    }
+}
+
+export class FiltersResponse extends Response {
+    filters?: IFilters
+
+    constructor(error: boolean, message: string, filters?: IFilters) {
+        super(error, message),
+        this.filters = filters
+    }
+}
+
+export class QuestionsResponse extends Response {
+    questions?: IQuestion[];
+
+    constructor(error: boolean, message: string, questions?: IQuestion[]) {
+        super(error, message),
+        this.questions = questions
     }
 }

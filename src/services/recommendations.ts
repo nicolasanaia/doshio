@@ -1,6 +1,7 @@
 import { IFilters } from "src/interfaces/filters";
 import { RecommendationsResponse } from "../models/response";
 import AnilistService from "./anilist";
+import { IRecommendationAnilist } from "src/interfaces/anilist";
 
 export default class RecommendationsService {
     anilist: AnilistService;
@@ -11,7 +12,7 @@ export default class RecommendationsService {
 
     async getRecommendation(filters: IFilters): Promise<RecommendationsResponse> {
         try {
-            const recommendation = await this.anilist.getRecommendation(filters);
+            const recommendation: IRecommendationAnilist = await this.anilist.getRecommendation(filters);
 
             return new RecommendationsResponse(false, 'Successfully found recommendation', recommendation);
         } catch (error) {

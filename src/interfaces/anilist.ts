@@ -8,7 +8,7 @@ type ICoverImage = {
   large?: string
 }
 
-export type IRecommendationAnilistResponse = {
+export type IRecommendationAnilist = {
     id?: number,
     title?: ITitle,
     coverImage?: ICoverImage,

@@ -1,11 +1,11 @@
 import axios from "axios";
 
 import { URL } from "../constants/url"
-import { IRecommendationAnilistResponse } from "../interfaces/anilist";
+import { IRecommendationAnilist } from "../interfaces/anilist";
 import { IFilters } from "../interfaces/filters";
 
 export default class AnilistService {
-    async getRecommendation(filters: IFilters): Promise<IRecommendationAnilistResponse> {
+    async getRecommendation(filters: IFilters): Promise<IRecommendationAnilist> {
         try {
             const graphqlQuery = `
                 query ($page: Int, $minScore: Int, $genre: [String], $format: MediaType) {
@@ -34,7 +34,7 @@ export default class AnilistService {
                 format: filters.format,
             };
 
-            const { data, status } = await axios.post(URL.ANILIST_GRAPHQL, { 
+            const { data, status } = await axios.post<IRecommendationAnilist>(URL.ANILIST_GRAPHQL, { 
                 query: graphqlQuery,
                 variables: variables
             });
